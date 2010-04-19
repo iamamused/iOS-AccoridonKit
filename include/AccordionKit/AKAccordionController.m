@@ -58,15 +58,17 @@ return self;
 	NSMutableArray *items = [NSMutableArray arrayWithCapacity:[_viewControllers count]];
 	
 	for (UIViewController *c in _viewControllers) {
-		if ([c accordionItem] != nil) {	
-			[items addObject:[c accordionItem]];
-			continue;
-		}
-		
 		// Create a new item based on view controller title;
 		[c loadView]; // so everything is ready.
 		[c viewDidLoad]; // call viewDidLoad since we just loaded it
-		AKAccordionItem *ai = [[AKAccordionItem alloc] initWithTitle:c.title image:[UIImage imageNamed:@"icon.png"] tag:nil];
+		AKAccordionItem *ai = nil;
+		if ([c respondsToSelector:@selector(accordionItem)]) {
+			ai = [[c accordionItem] retain];
+		}
+		
+		if (ai == nil) {
+			ai = [[AKAccordionItem alloc] initWithTitle:c.title image:[UIImage imageNamed:@"icon.png"] tag:0];
+		}
 		[items addObject:ai];
 		[ai release];
 		
@@ -149,14 +151,5 @@ return self;
 
 @end
 
-
-@implementation UIViewController (AKAccordionControllerItem)
-
-- (AKAccordionItem *)accordionItem;
-{
-	return nil;
-}
-
-@end
 
 

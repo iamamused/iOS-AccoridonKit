@@ -90,11 +90,3 @@
 
 @end
 
-@interface UIViewController (AKAccordionControllerItem)
-
-@property(nonatomic,retain) AKAccordionItem *accordionItem; //  Automatically created lazily with the view controller's title if it's not set explicitly.
-
-@property(nonatomic,readonly,retain) AKAccordionController *accordionController; //  If the view controller has a tab bar controller as its ancestor, return it. Returns nil otherwise.
-
-@end
-

@@ -64,14 +64,13 @@
 	
 	//this is the label on the tab button itself
 	self.title = @"Accordion View 1";
-	
-	//use whatever image you want and add it to your project
-	//self.accordionItem.image = [UIImage imageNamed:@"name_gray.png"];
-	
-	// set the long name shown in the navigation bar at the top
-	//self.accordionItem.title=@"Accordion Title";
-	
 
+}
+
+- (AKAccordionItem *)accordionItem;
+{
+	return [[[AKAccordionItem alloc] initWithTitle:@"Touch me to expand/collapse" image:[UIImage imageNamed:@"icon.png"] tag:0] autorelease];
+	
 }
 
 
