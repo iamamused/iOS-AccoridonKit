@@ -13,7 +13,6 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28D7ACF80DDB3853001CB0EB /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* DemoViewController.m */; };
-		DD251F88117BF14D00EC2B55 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD251F87117BF14D00EC2B55 /* icon.png */; };
 		DD251FF1117BF8E300EC2B55 /* AKAccordionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = DD251FEF117BF8E300EC2B55 /* AKAccordionBar.h */; };
 		DD251FF2117BF8E300EC2B55 /* AKAccordionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DD251FF0117BF8E300EC2B55 /* AKAccordionBar.m */; };
 		DD251FF5117BF8F300EC2B55 /* DemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD251FF3117BF8F300EC2B55 /* DemoViewController.xib */; };
@@ -54,7 +53,6 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* AccordionKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccordionKit_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* AccordionKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AccordionKit-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		DD251F87117BF14D00EC2B55 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../../../../../Desktop/icon.png; sourceTree = SOURCE_ROOT; };
 		DD251FEF117BF8E300EC2B55 /* AKAccordionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKAccordionBar.h; path = include/AccordionKit/AKAccordionBar.h; sourceTree = "<group>"; };
 		DD251FF0117BF8E300EC2B55 /* AKAccordionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKAccordionBar.m; path = include/AccordionKit/AKAccordionBar.m; sourceTree = "<group>"; };
 		DD251FF3117BF8F300EC2B55 /* DemoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DemoViewController.xib; path = Classes/DemoViewController.xib; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DD251F87117BF14D00EC2B55 /* icon.png */,
 				DD251FF4117BF8F300EC2B55 /* MainWindow.xib */,
 				DD251FF3117BF8F300EC2B55 /* DemoViewController.xib */,
 				DDE3348A117B962400F4DC5C /* DemoTableViewController.xib */,
@@ -166,9 +163,9 @@
 		DD7CF92311720D8B0028A53F /* AccordionKit Framework */ = {
 			isa = PBXGroup;
 			children = (
+				DD7CFA3611721D890028A53F /* AccordionKit.h */,
 				DD251FEF117BF8E300EC2B55 /* AKAccordionBar.h */,
 				DD251FF0117BF8E300EC2B55 /* AKAccordionBar.m */,
-				DD7CFA3611721D890028A53F /* AccordionKit.h */,
 				DD871D1D117955140053EE52 /* AKAccordionController.h */,
 				DD871D1E117955140053EE52 /* AKAccordionController.m */,
 				DDED24291178074C00DAD7DB /* AKAccordionView.h */,
@@ -257,7 +254,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDE3348C117B962400F4DC5C /* DemoTableViewController.xib in Resources */,
-				DD251F88117BF14D00EC2B55 /* icon.png in Resources */,
 				DD251FF5117BF8F300EC2B55 /* DemoViewController.xib in Resources */,
 				DD251FF6117BF8F300EC2B55 /* MainWindow.xib in Resources */,
 			);

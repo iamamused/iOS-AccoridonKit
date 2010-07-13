@@ -42,33 +42,21 @@
 @synthesize viewControllers = _viewControllers;
 
 
-/*
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-// Custom initialization
-}
-return self;
-}
-*/
-
-
 - (void)loadView {
 	
 	NSMutableArray *items = [NSMutableArray arrayWithCapacity:[_viewControllers count]];
 	
-	for (UIViewController *c in _viewControllers) {
+	for (UIViewController<AKAccordionControllerDelegate> *c in _viewControllers) {
 		// Create a new item based on view controller title;
 		[c loadView]; // so everything is ready.
 		[c viewDidLoad]; // call viewDidLoad since we just loaded it
 		AKAccordionItem *ai = nil;
 		if ([c respondsToSelector:@selector(accordionItem)]) {
 			ai = [[c accordionItem] retain];
+		} else {
+			ai = [[AKAccordionItem alloc] initWithTitle:c.title image:nil tag:0];
 		}
 		
-		if (ai == nil) {
-			ai = [[AKAccordionItem alloc] initWithTitle:c.title image:[UIImage imageNamed:@"icon.png"] tag:0];
-		}
 		[items addObject:ai];
 		[ai release];
 		
@@ -84,8 +72,19 @@ return self;
 	self.view = a;
 }
 
+- (void)viewWillAppear:(BOOL)animated;
+{
+	if (self.view.superview) {
+		CGRect parent = self.view.superview.frame;
+		parent.origin.x = 0;
+		parent.origin.y = 0;
+		self.view.frame = parent;
+	}
+}
+
 - (void)setViewControllers:(NSArray *)viewControllers;
 {
+	// @TODO set view controllers shoud be able to occur after inital load.
 	// setup the view controllers.
 	[_viewControllers release];
 	_viewControllers = nil;

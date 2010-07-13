@@ -33,6 +33,10 @@
 
 #import "AccordionKit.h"
 
+@interface AKAccordionView (Private)
+- (void)_placeToolbars;
+@end
+
 
 @implementation AKAccordionView
 
@@ -48,6 +52,11 @@
     return self;
 }
 
+- (void)setFrame:(CGRect)rect;
+{
+	[super setFrame:rect];
+	[self _placeToolbars];
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -162,7 +171,6 @@
 			//CGRect collapseFrame = _selectedItemView.frame;
 			//collapseFrame.size.height = 0;
 			//[_selectedItemView setFrame:collapseFrame];
-			
 			//[_selectedItemView removeFromSuperview];
 
 			

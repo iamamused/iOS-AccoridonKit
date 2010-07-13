@@ -33,6 +33,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AccordionKit.h"
+#import "AKAccordionBar.h"
 
 @class AKAccordionItem;
 @protocol AKAccordionViewDelegate;
@@ -60,7 +61,6 @@
 
 @end
 
-//___________________________________________________________________________________________________
 
 @protocol AKAccordionViewDelegate<NSObject>
 

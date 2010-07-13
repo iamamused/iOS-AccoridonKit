@@ -36,68 +36,64 @@
 
 @implementation DemoViewController
 
-/*
-// The designated initializer. Override to perform setup that is required before the view is loaded.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-	UIScreen *screen = [UIScreen mainScreen];
-	// Load your primary view here for the demo
-	self.view = [[AKView alloc] initWithFrame:[screen applicationFrame]];
-}
- */
-
-
-
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	//this is the label on the tab button itself
 	self.title = @"Accordion View 1";
-
-}
-
-- (AKAccordionItem *)accordionItem;
-{
-	return [[[AKAccordionItem alloc] initWithTitle:@"Touch me to expand/collapse" image:[UIImage imageNamed:@"icon.png"] tag:0] autorelease];
-	
 }
 
 
-
-/*
-// Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
+    return YES;
 }
 
 
 - (void)dealloc {
     [super dealloc];
 }
+
+#pragma mark -
+#pragma mark AKAccordionControllerDelegate
+
+- (AKAccordionItem *)accordionItem;
+{
+	NSLog(@"accordionItem");
+	return [[[AKAccordionItem alloc] initWithTitle:@"Touch me to expand/collapse" image:[UIImage imageNamed:@"icon.png"] tag:0] autorelease];
+}
+
+- (BOOL)accordionController:(AKAccordionController *)accordionController shouldSelectViewController:(UIViewController *)viewController;
+{
+	NSLog(@"accordionController:shouldSelectViewController");
+	return YES;
+}
+
+- (void)accordionController:(AKAccordionController *)accordionController didSelectViewController:(UIViewController *)viewController;
+{
+	NSLog(@"accordionController:didSelectViewController");
+}
+
+// Before and after expansion
+- (void)accordionController:(AKAccordionController *)accordionController willExpandViewController:(UIViewController *)viewController;
+{
+	NSLog(@"accordionController:willExpandViewController");
+}
+
+- (void)accordionController:(AKAccordionController *)accordionController didExpandViewController:(UIViewController *)viewController;
+{
+	NSLog(@"accordionController:didExpandViewController");
+}
+
+
+// Before and after collapse
+- (void)accordionController:(AKAccordionController *)accordionController willCollapseViewController:(UIViewController *)viewController;
+{
+	NSLog(@"accordionController:willCollapseViewController");
+}
+
+- (void)accordionController:(AKAccordionController *)accordionController didCollapseViewController:(UIViewController *)viewController;
+{
+	NSLog(@"accordionController:didCollapseViewController");
+}
+
+
 
 @end

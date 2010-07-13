@@ -49,20 +49,28 @@
     
     // Override point for customization after app launch    
 	// create tab bar controller and array to hold the view controllers
-	accordionController = [[AKAccordionController alloc] init];
+	AKAccordionController *ac = [[AKAccordionController alloc] init];
 	NSMutableArray *localControllersArray = [[NSMutableArray alloc] initWithCapacity:2];
 	
 	[localControllersArray addObject:viewController];
 	[localControllersArray addObject:tableViewController];
 		
 	// load up our tab bar controller with the view controllers
-	accordionController.viewControllers = localControllersArray;
+	ac.viewControllers = localControllersArray;
 	
 	// release the array because the tab bar controller now has it
 	[localControllersArray release];
 	
+	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(20,20,400,400)];
+	[view setBackgroundColor:[UIColor redColor]];
+	
+	[view addSubview:ac.view];
+	
+	self.accordionController = ac;
+	[ac release];
+	
 	// add the accordionController as a subview in the window
-	[window addSubview:accordionController.view];
+	[window addSubview:view];
 	
 	// need this last line to display the window (and tab bar controller)
 	[window makeKeyAndVisible];

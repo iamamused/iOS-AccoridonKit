@@ -40,8 +40,7 @@
 @private
 	id<AKAccordionBarDelegate>   _akDelegate;
 	NSString *_title;
-	UIImage *_icon;
-	
+	UIImage *_icon;	
 	UIBarButtonItem *_barButtonIcon;
 	UIBarButtonItem *_barButtonTitle;
 }
@@ -52,13 +51,11 @@
 
 @end
 
-
+#pragma mark -
 #pragma mark AKAccordionBarDelegate
 
 @protocol AKAccordionBarDelegate<NSObject>
 @optional
-
 - (void)didSelectBar:(AKAccordionBar *)bar;
-
 @end
 

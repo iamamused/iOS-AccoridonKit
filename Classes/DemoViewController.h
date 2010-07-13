@@ -34,7 +34,7 @@
 #import <UIKit/UIKit.h>
 #import <AccordionKit/AccordionKit.h>
 
-@interface DemoViewController : UIViewController {
+@interface DemoViewController : UIViewController <AKAccordionControllerDelegate> {
 
 }
 
