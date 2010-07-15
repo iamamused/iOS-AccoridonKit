@@ -35,19 +35,22 @@
 
 @protocol AKAccordionBarDelegate;
 
-@interface AKAccordionBar : UIToolbar {
+@interface AKAccordionBar : UIView {
 
 @private
-	id<AKAccordionBarDelegate>   _akDelegate;
+	id<AKAccordionBarDelegate> _delegate;
 	NSString *_title;
 	UIImage *_icon;	
-	UIBarButtonItem *_barButtonIcon;
-	UIBarButtonItem *_barButtonTitle;
+	
+	UILabel *_labelView;
+	UIImageView *_imageView;
 }
 
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) UIImage *icon;
 @property (nonatomic, retain) id<AKAccordionBarDelegate> accordionDelegate;
+
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image;
 
 @end
 

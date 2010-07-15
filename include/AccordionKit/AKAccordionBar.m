@@ -38,80 +38,95 @@
 
 @synthesize title = _title;
 @synthesize icon = _icon;
-@synthesize accordionDelegate = _akDelegate;
+@synthesize accordionDelegate = _delegate;
 
-- (id)initWithFrame:(CGRect)frame {
-
-	if (self = [super initWithFrame:frame]) {
-		_barButtonIcon = [[UIBarButtonItem alloc] initWithImage:nil style:UIBarButtonItemStylePlain target:self action:@selector(_triggerDelegateSelect:)];
-		
-		_barButtonTitle = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(_triggerDelegateSelect:)];
-		[self setItems:[NSArray arrayWithObjects:_barButtonIcon, _barButtonTitle, nil] animated:NO];
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image;
+{
+	if (self = [self initWithFrame:CGRectZero]) {
+		if (title != nil) self.title = title;
+		if (image != nil) self.icon = image;
 	}
 	return self;
 }
 
--(void)_triggerDelegateSelect:(id)sender {
-	[self.accordionDelegate didSelectBar:self];
+- (id)initWithFrame:(CGRect)frame {
+
+	if (self = [super initWithFrame:frame]) {
+		// Add a gesture to allow us to pan the app to change views.
+		UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_triggerDelegateSelect:)];
+		[gesture setNumberOfTapsRequired:1];
+		[gesture setNumberOfTouchesRequired:1];
+		[self addGestureRecognizer:gesture];
+		[gesture release];
+		
+		[self setBackgroundColor:[UIColor lightGrayColor]];
+
+	}
+	return self;
+}
+
+-(void)_triggerDelegateSelect:(UITapGestureRecognizer *)sender {	
+	if (sender.state == UIGestureRecognizerStateEnded) {
+		if (self.accordionDelegate != NULL) {
+			[self.accordionDelegate didSelectBar:self];
+		}	
+	}
 }
 
 - (void)setTitle:(NSString *)title {
+	
 	[_title release];
 	_title = nil;
 	if (title == nil) return;
 	_title = [title retain];
-	[_barButtonTitle setTitle:title];
+	
+	if (_labelView == nil) {
+		_labelView = [[UILabel alloc] initWithFrame:CGRectZero];
+		[_labelView setBackgroundColor:[UIColor clearColor]];
+		[self addSubview:_labelView];
+		[_labelView setText:title];
+	}
+	[_labelView setText:title];
+	
+	[self setNeedsDisplay];
 }
 
 - (void)setIcon:(UIImage *)image {
+	
 	[_icon release];
 	_icon = nil;
 	if (image == nil) return;
 	_icon = [image retain];
-	[_barButtonIcon setImage:image];
+	
+	if (_imageView == nil) {
+		_imageView = [[UIImageView alloc] initWithImage:_icon];
+		[self addSubview:_imageView];
+	} else {
+		[_imageView setImage:_icon];
+	}
+	
+	[self setNeedsDisplay];
 }
 
 - (void)dealloc {
 	[_title release];
 	[_icon release];
-	[_barButtonIcon release];
-	[_barButtonTitle release];
+	[_labelView release];
+	[_imageView release];
     [super dealloc];
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event { 
+- (void)drawRect:(CGRect)rect 
+{
+
 	
-	//Get all the touches.
-	NSSet *allTouches = [event allTouches];
-	
-	//Number of touches on the screen
-	switch ([allTouches count])
-	{
-		case 1:
-		{
-			
-			[self _triggerDelegateSelect:self];
-			/*
-			//Get the first touch.
-			UITouch *touch = [[allTouches allObjects] objectAtIndex:0];
-			
-			switch([touch tapCount])
-			{
-				case 1://Single tap
-					[self.accordionDelegate didSelectBar:self];
-					break;
-				case 2://Double tap.
-					break;
-			}
-			 */
-		} 
-			break;
+	if (_labelView != nil) {
+		CGRect lFrame = self.frame;
+		lFrame.origin.x = (_icon == nil) ? 10 : _icon.size.width + 20;
+		lFrame.origin.y = 0;
+		[_labelView setFrame:lFrame];
 	}
 	
-}
-
-- (void)drawRectGloss:(CGRect)rect 
-{
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
 	
     CGGradientRef glossGradient;
@@ -131,6 +146,8 @@
 	
     CGGradientRelease(glossGradient);
     CGColorSpaceRelease(rgbColorspace); 
+	
+	[super drawRect:rect];
 }
 
 @end

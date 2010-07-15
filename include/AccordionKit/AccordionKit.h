@@ -36,5 +36,4 @@
 // Include your plugin related headers here...
 #import "AKAccordionController.h"
 #import "AKAccordionView.h"
-#import "AKAccordionItem.h"
 #import "AKAccordionBar.h"

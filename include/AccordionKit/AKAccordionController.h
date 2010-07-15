@@ -78,7 +78,7 @@
 @protocol AKAccordionControllerDelegate <NSObject>
 @optional
 
-- (AKAccordionItem *)accordionItem;
+- (AKAccordionBar *)accordionBar;
 
 - (BOOL)accordionController:(AKAccordionController *)accordionController shouldSelectViewController:(UIViewController *)viewController;
 - (void)accordionController:(AKAccordionController *)accordionController didSelectViewController:(UIViewController *)viewController;

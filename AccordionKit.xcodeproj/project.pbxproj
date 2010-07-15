@@ -22,13 +22,11 @@
 		DD7CFA3711721D890028A53F /* AccordionKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7CFA3611721D890028A53F /* AccordionKit.h */; };
 		DD871D1F117955140053EE52 /* AKAccordionController.h in Headers */ = {isa = PBXBuildFile; fileRef = DD871D1D117955140053EE52 /* AKAccordionController.h */; };
 		DD871D20117955140053EE52 /* AKAccordionController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD871D1E117955140053EE52 /* AKAccordionController.m */; };
-		DD871D5511795EE70053EE52 /* AKAccordionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD871D5311795EE70053EE52 /* AKAccordionItem.m */; };
-		DD871D5611795EE70053EE52 /* AKAccordionItem.h in Headers */ = {isa = PBXBuildFile; fileRef = DD871D5411795EE70053EE52 /* AKAccordionItem.h */; };
 		DDE3348B117B962400F4DC5C /* DemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE33489117B962400F4DC5C /* DemoTableViewController.m */; };
 		DDE3348C117B962400F4DC5C /* DemoTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE3348A117B962400F4DC5C /* DemoTableViewController.xib */; };
 		DDED242B1178074C00DAD7DB /* AKAccordionView.h in Headers */ = {isa = PBXBuildFile; fileRef = DDED24291178074C00DAD7DB /* AKAccordionView.h */; };
 		DDED242C1178074C00DAD7DB /* AKAccordionView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDED242A1178074C00DAD7DB /* AKAccordionView.m */; };
-		DDED2463117807EE00DAD7DB /* libAccordionKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7CF8E911720A330028A53F /* libAccordionKit.a */; };
+		DDED2463117807EE00DAD7DB /* libAccordionKitMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7CF8E911720A330028A53F /* libAccordionKitMobile.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,13 +55,11 @@
 		DD251FF0117BF8E300EC2B55 /* AKAccordionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKAccordionBar.m; path = include/AccordionKit/AKAccordionBar.m; sourceTree = "<group>"; };
 		DD251FF3117BF8F300EC2B55 /* DemoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DemoViewController.xib; path = Classes/DemoViewController.xib; sourceTree = "<group>"; };
 		DD251FF4117BF8F300EC2B55 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = Classes/MainWindow.xib; sourceTree = "<group>"; };
-		DD7CF8E911720A330028A53F /* libAccordionKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAccordionKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD7CF8E911720A330028A53F /* libAccordionKitMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAccordionKitMobile.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD7CF970117211070028A53F /* AccordionKit.framework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AccordionKit.framework-Info.plist"; sourceTree = "<group>"; };
 		DD7CFA3611721D890028A53F /* AccordionKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccordionKit.h; path = include/AccordionKit/AccordionKit.h; sourceTree = "<group>"; };
 		DD871D1D117955140053EE52 /* AKAccordionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKAccordionController.h; path = include/AccordionKit/AKAccordionController.h; sourceTree = "<group>"; };
 		DD871D1E117955140053EE52 /* AKAccordionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKAccordionController.m; path = include/AccordionKit/AKAccordionController.m; sourceTree = "<group>"; };
-		DD871D5311795EE70053EE52 /* AKAccordionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKAccordionItem.m; path = include/AccordionKit/AKAccordionItem.m; sourceTree = "<group>"; };
-		DD871D5411795EE70053EE52 /* AKAccordionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKAccordionItem.h; path = include/AccordionKit/AKAccordionItem.h; sourceTree = "<group>"; };
 		DDE33488117B962400F4DC5C /* DemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTableViewController.h; sourceTree = "<group>"; };
 		DDE33489117B962400F4DC5C /* DemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTableViewController.m; sourceTree = "<group>"; };
 		DDE3348A117B962400F4DC5C /* DemoTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DemoTableViewController.xib; path = Classes/DemoTableViewController.xib; sourceTree = "<group>"; };
@@ -76,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDED2463117807EE00DAD7DB /* libAccordionKit.a in Frameworks */,
+				DDED2463117807EE00DAD7DB /* libAccordionKitMobile.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -111,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* AccordionKit.app */,
-				DD7CF8E911720A330028A53F /* libAccordionKit.a */,
+				DD7CF8E911720A330028A53F /* libAccordionKitMobile.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,8 +166,6 @@
 				DD871D1E117955140053EE52 /* AKAccordionController.m */,
 				DDED24291178074C00DAD7DB /* AKAccordionView.h */,
 				DDED242A1178074C00DAD7DB /* AKAccordionView.m */,
-				DD871D5411795EE70053EE52 /* AKAccordionItem.h */,
-				DD871D5311795EE70053EE52 /* AKAccordionItem.m */,
 			);
 			name = "AccordionKit Framework";
 			sourceTree = "<group>";
@@ -187,7 +181,6 @@
 				DD7CFA3711721D890028A53F /* AccordionKit.h in Headers */,
 				DDED242B1178074C00DAD7DB /* AKAccordionView.h in Headers */,
 				DD871D1F117955140053EE52 /* AKAccordionController.h in Headers */,
-				DD871D5611795EE70053EE52 /* AKAccordionItem.h in Headers */,
 				DD251FF1117BF8E300EC2B55 /* AKAccordionBar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,7 +220,7 @@
 			);
 			name = AccordionKitMobile;
 			productName = AccordionKitMobile;
-			productReference = DD7CF8E911720A330028A53F /* libAccordionKit.a */;
+			productReference = DD7CF8E911720A330028A53F /* libAccordionKitMobile.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -279,7 +272,6 @@
 			files = (
 				DDED242C1178074C00DAD7DB /* AKAccordionView.m in Sources */,
 				DD871D20117955140053EE52 /* AKAccordionController.m in Sources */,
-				DD871D5511795EE70053EE52 /* AKAccordionItem.m in Sources */,
 				DD251FF2117BF8E300EC2B55 /* AKAccordionBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,7 +356,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				PREBINDING = NO;
-				PRODUCT_NAME = AccordionKit;
+				PRODUCT_NAME = AccordionKitMobile;
 				SDKROOT = iphoneos3.2;
 			};
 			name = Debug;

@@ -50,15 +50,15 @@
 		// Create a new item based on view controller title;
 		[c loadView]; // so everything is ready.
 		[c viewDidLoad]; // call viewDidLoad since we just loaded it
-		AKAccordionItem *ai = nil;
-		if ([c respondsToSelector:@selector(accordionItem)]) {
-			ai = [[c accordionItem] retain];
+		AKAccordionBar *ab = nil;
+		if ([c respondsToSelector:@selector(accordionBar)]) {
+			ab = [[c accordionBar] retain];
 		} else {
-			ai = [[AKAccordionItem alloc] initWithTitle:c.title image:nil tag:0];
+			ab = [[AKAccordionBar alloc] initWithTitle:c.title image:nil];
 		}
 		
-		[items addObject:ai];
-		[ai release];
+		[items addObject:ab];
+		[ab release];
 		
 	}
 	

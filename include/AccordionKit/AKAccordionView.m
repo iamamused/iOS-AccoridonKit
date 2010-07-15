@@ -41,8 +41,8 @@
 @implementation AKAccordionView
 
 @synthesize delegate = _delegate;
-@synthesize items = _items;
-@synthesize selectedItem = _selectedItem;
+@synthesize bars = _bars;
+@synthesize selectedBar = _selectedBar;
 
 
 - (id)initWithFrame:(CGRect)frame {
@@ -57,13 +57,6 @@
 	[super setFrame:rect];
 	[self _placeToolbars];
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 - (void)dealloc {
     [super dealloc];
@@ -74,31 +67,21 @@
 
 - (void)setItems:(NSArray *)items;
 {
-	[_items release];
-	_items = nil;
-	_items = [items retain];
+	[_bars release];
+	_bars = nil;
+	_bars = [items retain];
 
 	for (UIView *view in [self subviews]) {
 		[view removeFromSuperview];
 	}
 
-	self.selectedItem = nil;
+	self.selectedBar = nil;
 	if ([items count] > 0) {
-		self.selectedItem = [_items objectAtIndex:0];	
+		self.selectedBar = [_bars objectAtIndex:0];	
 	}
-
-	[_bars release];
-	_bars = nil;
-	_bars = [[NSMutableArray alloc] initWithCapacity:[_items count]];
 	
-	for (AKAccordionItem *i in _items) {
-		AKAccordionBar *v = [[AKAccordionBar alloc] initWithFrame:CGRectNull];
-		[v setBackgroundColor:[UIColor lightGrayColor]];
-		[v setTitle:[i title]];
-		[v setIcon:[i image]];
-		[v setAccordionDelegate:self];
-		[_bars addObject:v];
-		[v release];
+	for (AKAccordionBar *b in _bars) {
+		[b setAccordionDelegate:self];
 	}
 	
 	[self _placeToolbars];
@@ -111,7 +94,7 @@
 - (void)didSelectBar:(AKAccordionBar *)bar 
 {
 	NSUInteger barIndex = [_bars indexOfObject:bar];
-	_selectedItem = [_items objectAtIndex:barIndex];
+	_selectedBar = [_bars objectAtIndex:barIndex];
 	[self _placeToolbars];
 }
 		 
@@ -120,15 +103,15 @@
 {
 	
 	// Are there items?
-	if ([_items count] == 0) return;
+	if ([_bars count] == 0) return;
 		
 	// Figure out which item is going to be the "open" one.
-	AKAccordionItem *open = self.selectedItem;
+	AKAccordionBar *open = self.selectedBar;
 	if (open == nil) {
-		open = [_items objectAtIndex:0];
+		open = [_bars objectAtIndex:0];
 	}
 	
-	int selectionIndex = [_items indexOfObject:open];
+	int selectionIndex = [_bars indexOfObject:open];
 	
 	// Get the view for the new open item
 	CGRect closedFrame = self.frame;
@@ -142,18 +125,19 @@
 	[UIView setAnimationDuration:0.5];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	
-	if (_selectedItemView != nil) {
-		CGRect closed = _selectedItemView.frame;
+	if (_selectedBarView != nil) {
+		CGRect closed = _selectedBarView.frame;
 		if (selectionIndex < _previousSelectedIndex) {
 			closed.origin.y = closed.origin.y + closed.size.height;
 		}
 		closed.size.height = 0.0f;
 		
-		[_selectedItemView setFrame:closed];	
+		[_selectedBarView setFrame:closed];	
+		[_selectedBarView setClipsToBounds:YES];
 	}
 	
 	UIView *previous = nil;
-	for (int index = 0; index < [_items count]; index++) {
+	for (int index = 0; index < [_bars count]; index++) {
 
 		CGRect f = self.frame;
 		f.origin.x = 0;
@@ -166,21 +150,15 @@
 		[v setFrame:f];
 		[self addSubview:v];
 		
-		if ([[_items objectAtIndex:index] isEqual:open]) {
-			
-			//CGRect collapseFrame = _selectedItemView.frame;
-			//collapseFrame.size.height = 0;
-			//[_selectedItemView setFrame:collapseFrame];
-			//[_selectedItemView removeFromSuperview];
-
+		if ([v isEqual:open]) {
 			
 			CGRect openFrame = self.frame;
 			openFrame.origin.y = f.origin.y + f.size.height;
-			openFrame.size.height = openFrame.size.height - (44.0f * [_items count]);
+			openFrame.size.height = openFrame.size.height - (44.0f * [_bars count]);
 
-			v = _selectedItemView = newSelection;
-			[_selectedItemView setFrame:openFrame];
-			[self insertSubview:_selectedItemView atIndex:0];
+			v = _selectedBarView = newSelection;
+			[_selectedBarView setFrame:openFrame];
+			[self insertSubview:_selectedBarView atIndex:0];
 		}
 		
 		previous = v;

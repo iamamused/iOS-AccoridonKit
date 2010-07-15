@@ -42,11 +42,10 @@
 @interface AKAccordionView : UIView <AKAccordionBarDelegate>{
 @private
     id<AKAccordionViewDelegate>   _delegate;
-    NSArray               *_items;
     NSMutableArray        *_bars;
-    NSUInteger				  _previousSelectedIndex;
-    AKAccordionItem       *_selectedItem;
-    UIView					  *_selectedItemView;
+    NSUInteger			 _previousSelectedIndex;
+    AKAccordionBar       *_selectedBar;
+    UIView				  *_selectedBarView;
     struct {
         unsigned int downButtonSentAction:1;
         unsigned int isLocked:1;
@@ -54,8 +53,8 @@
 }
 
 @property(nonatomic,assign) id<AKAccordionViewDelegate> delegate;     // weak reference. default is nil
-@property(nonatomic,copy)   NSArray             *items;        // get/set visible AKAccordionItems. default is nil. changes not animated. shown in order
-@property(nonatomic,assign) AKAccordionItem        *selectedItem; // will show feedback based on mode. default is nil
+@property(nonatomic,copy)   NSArray             *bars;        // get/set visible AKAccordionItems. default is nil. changes not animated. shown in order
+@property(nonatomic,assign) AKAccordionBar       *selectedBar; // will show feedback based on mode. default is nil
 
 - (void)setItems:(NSArray *)items animated:(BOOL)animated;   // will fade in or out or reorder and adjust spacing
 

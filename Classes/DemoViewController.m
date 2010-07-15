@@ -54,10 +54,10 @@
 #pragma mark -
 #pragma mark AKAccordionControllerDelegate
 
-- (AKAccordionItem *)accordionItem;
+- (AKAccordionBar *)accordionBar;
 {
-	NSLog(@"accordionItem");
-	return [[[AKAccordionItem alloc] initWithTitle:@"Touch me to expand/collapse" image:[UIImage imageNamed:@"icon.png"] tag:0] autorelease];
+	NSLog(@"accordionBar");
+	return [[[AKAccordionBar alloc] initWithTitle:@"Touch me to expand/collapse" image:[UIImage imageNamed:@"icon.png"]] autorelease];
 }
 
 - (BOOL)accordionController:(AKAccordionController *)accordionController shouldSelectViewController:(UIViewController *)viewController;
