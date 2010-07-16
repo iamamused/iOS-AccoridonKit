@@ -41,29 +41,15 @@
 @interface AKAccordionController : UIViewController <AKAccordionViewDelegate, NSCoding> {
 	@package
     AKAccordionView        *_accordion;
-    
-    UIView                 *_containerView;
-    UIView                 *_viewControllerTransitionView;
-    
+        
     NSMutableArray         *_viewControllers;
-    id                      _accordionItemsToViewControllers;
     UIViewController       *_selectedViewController;
     
     id<AKAccordionControllerDelegate> _delegate;
     
-    UIViewController       *_selectedViewControllerDuringWillAppear;
-	
-    UIViewController       *_transientViewController;
-    
-    NSUInteger              _maxItems;
-    
-    struct {
-		unsigned int needsToRebuildItems:1;
-    } _accordionControllerFlags;
 }
 
 @property(nonatomic,copy) NSArray *viewControllers;
-
 - (void)setViewControllers:(NSArray *)viewControllers animated:(BOOL)animated;
 
 @property(nonatomic,assign) UIViewController *selectedViewController;

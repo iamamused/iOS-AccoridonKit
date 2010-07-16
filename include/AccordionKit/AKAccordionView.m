@@ -177,4 +177,9 @@
 	[self setItems:items];
 }
 
+- (void)selectBarAtIndex:(NSUInteger)index {
+	self.selectedBar = [_bars objectAtIndex:index];
+	[self _placeToolbars];
+}
+
 @end

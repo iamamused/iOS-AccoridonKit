@@ -100,8 +100,9 @@
 	return [_viewControllers indexOfObject:self.selectedViewController];
 }
 
-- (void)selectedIndex:(NSUInteger)index {
+- (void)setSelectedIndex:(NSUInteger)index {
 	[self setSelectedViewController:[_viewControllers objectAtIndex:index]];
+	[(AKAccordionView *)self.view selectBarAtIndex:index];
 }
 
 #pragma mark -

@@ -57,6 +57,7 @@
 @property(nonatomic,assign) AKAccordionBar       *selectedBar; // will show feedback based on mode. default is nil
 
 - (void)setItems:(NSArray *)items animated:(BOOL)animated;   // will fade in or out or reorder and adjust spacing
+- (void)selectBarAtIndex:(NSUInteger)index;
 
 @end
 
