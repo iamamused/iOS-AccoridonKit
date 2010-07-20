@@ -38,17 +38,26 @@
 @interface AKAccordionBar : UIView {
 
 @private
-	id<AKAccordionBarDelegate> _delegate;
+	id<AKAccordionBarDelegate> _accordionBarDelegate;
 	NSString *_title;
 	UIImage *_icon;	
 	
 	UILabel *_labelView;
 	UIImageView *_imageView;
+	
+	UIColor *startColor;
+	UIColor *endColor;
 }
 
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) UIImage *icon;
 @property (nonatomic, retain) id<AKAccordionBarDelegate> accordionDelegate;
+
+@property (nonatomic, retain) UIColor *startColor;
+@property (nonatomic, retain) UIColor *endColor;
+
+@property (nonatomic, readonly) UILabel *label;
+
 
 - (id)initWithTitle:(NSString *)title image:(UIImage *)image;
 

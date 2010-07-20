@@ -67,7 +67,7 @@
 	// AKAccordionView will resize to fit parent view as necessary.
 	AKAccordionView *a = [[AKAccordionView alloc] initWithFrame:[screen applicationFrame]];
 	[a setDelegate:self];
-	[a setItems:items]; 
+	[a setItems:items animated:YES]; 
 	
 	self.view = a;
 }

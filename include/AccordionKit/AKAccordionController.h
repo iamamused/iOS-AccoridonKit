@@ -38,7 +38,7 @@
 @class AKAccordionItem;
 @protocol AKAccordionControllerDelegate;
 
-@interface AKAccordionController : UIViewController <AKAccordionViewDelegate, NSCoding> {
+@interface AKAccordionController : UIViewController <AKAccordionViewDelegate> {
 	@package
     AKAccordionView        *_accordion;
         

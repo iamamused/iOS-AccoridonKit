@@ -46,10 +46,6 @@
     NSUInteger			 _previousSelectedIndex;
     AKAccordionBar       *_selectedBar;
     UIView				  *_selectedBarView;
-    struct {
-        unsigned int downButtonSentAction:1;
-        unsigned int isLocked:1;
-    } _accordionViewFlags;
 }
 
 @property(nonatomic,assign) id<AKAccordionViewDelegate> delegate;     // weak reference. default is nil

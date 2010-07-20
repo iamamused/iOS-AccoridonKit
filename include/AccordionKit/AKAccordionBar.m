@@ -32,19 +32,23 @@
 //  POSSIBILITY OF SUCH DAMAGE.
 
 #import "AKAccordionBar.h"
-
+#import <CoreGraphics/CoreGraphics.h>
 
 @implementation AKAccordionBar
 
 @synthesize title = _title;
 @synthesize icon = _icon;
-@synthesize accordionDelegate = _delegate;
+@synthesize accordionDelegate = _accordionBarDelegate;
+@synthesize label = _labelView;
+@synthesize startColor, endColor;
 
 - (id)initWithTitle:(NSString *)title image:(UIImage *)image;
 {
 	if (self = [self initWithFrame:CGRectZero]) {
 		if (title != nil) self.title = title;
-		if (image != nil) self.icon = image;
+		if (image != nil) self.icon = image;		
+		self.startColor = [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.35f];
+		self.endColor = [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.06f];
 	}
 	return self;
 }
@@ -83,6 +87,8 @@
 	if (_labelView == nil) {
 		_labelView = [[UILabel alloc] initWithFrame:CGRectZero];
 		[_labelView setBackgroundColor:[UIColor clearColor]];
+		[_labelView setShadowColor:[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.3f]];
+		[_labelView setShadowOffset:CGSizeMake(-1.0f, -1.0f)];
 		[self addSubview:_labelView];
 		[_labelView setText:title];
 	}
@@ -129,15 +135,35 @@
 	
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
 	
+	
+	CGContextSaveGState(currentContext);
+	CGContextSetLineWidth(currentContext, 1);
+
+	// Top Highlight
+	[[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.3f] setStroke];
+	CGContextMoveToPoint(currentContext, 0.0f, 0.0f);
+	CGContextAddLineToPoint(currentContext, self.frame.size.width, 0.0f );
+	CGContextDrawPath(currentContext, kCGPathStroke);
+
+	// Bottom Highlight
+	[[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.4f] setStroke];
+	CGContextMoveToPoint(currentContext, 0.0f, self.frame.size.height);
+	CGContextAddLineToPoint(currentContext, self.frame.size.width, self.frame.size.height );
+	CGContextDrawPath(currentContext, kCGPathStroke);
+	CGContextRestoreGState(currentContext);	
+	
+	// Gloss
     CGGradientRef glossGradient;
     CGColorSpaceRef rgbColorspace;
-    size_t num_locations = 2;
     CGFloat locations[2] = { 0.0, 1.0 };
-    CGFloat components[8] = { 1.0, 1.0, 1.0, 0.35,  // Start color
-		1.0, 1.0, 1.0, 0.06 }; // End color
+    NSArray *colors = [NSArray arrayWithObjects: 
+		[self.startColor CGColor],
+		[self.endColor CGColor],
+		nil
+	];
 	
     rgbColorspace = CGColorSpaceCreateDeviceRGB();
-    glossGradient = CGGradientCreateWithColorComponents(rgbColorspace, components, locations, num_locations);
+    glossGradient = CGGradientCreateWithColors(rgbColorspace, (CFArrayRef)colors, locations);
 	
     CGRect currentBounds = self.bounds;
     CGPoint topCenter = CGPointMake(CGRectGetMidX(currentBounds), 0.0f);
@@ -147,7 +173,6 @@
     CGGradientRelease(glossGradient);
     CGColorSpaceRelease(rgbColorspace); 
 	
-	[super drawRect:rect];
 }
 
 @end

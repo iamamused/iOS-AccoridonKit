@@ -65,7 +65,7 @@
 #pragma mark -
 #pragma mark Creation
 
-- (void)setItems:(NSArray *)items;
+- (void)setItems:(NSArray *)items animated:(BOOL)animated;
 {
 	[_bars release];
 	_bars = nil;
@@ -172,10 +172,6 @@
 
 //- (UIView *)accordionView:(AKAccordionView *)accordionView viewForIndex:(NSUInteger)index;   // custom view for header. will be adjusted to default or specified header height
 
-- (void)setItems:(NSArray *)items animated:(BOOL)animated;
-{
-	[self setItems:items];
-}
 
 - (void)selectBarAtIndex:(NSUInteger)index {
 	self.selectedBar = [_bars objectAtIndex:index];
